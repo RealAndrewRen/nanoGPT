@@ -221,14 +221,7 @@ def estimate_loss():
         for k in range(eval_iters):
             X, Y = get_batch(split)
             with ctx:
-                logits = model(X)
-                loss_fct = torch.nn.CrossEntropyLoss(reduction='none')
-                loss_per_token = loss_fct(
-                    logits.view(-1, logits.size(-1)),
-                    Y.view(-1)
-                )
-                masked_loss = (loss_per_token * mask.view(-1)).sum() / mask.sum()
-                loss = masked_loss
+                logits, loss = model(X, Y)
             losses[k] = loss.item()
         out[split] = losses.mean()
     model.train()
