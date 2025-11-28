@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import re
 from pathlib import Path
@@ -141,7 +142,7 @@ PAT_ASHRAQ_MORE_INFO = re.compile(r"""(?:^|\s)\bFor\s+more\s+information[^.]*\."
 PAT_ASHRAQ_INQUIRIES = re.compile(r"""(?:^|\s)\bFor\s+investor\s+and\s+media\s+inquiries[^.]*\.""", re.IGNORECASE)
 PAT_ASHRAQ_VIEW_SOURCE = re.compile(r"""(?:^|\s)\bView\s+source[^.]*\.""", re.IGNORECASE)
 PAT_ASHRAQ_SOURCE_EIKON = re.compile(r"""(?:^|\s)\bSource\s+text\s+for\s+Eikon[^.]*\.""", re.IGNORECASE)
-PAT_ASHRAQ_EMAIL_DIST = re.compile(r"""(?:^|\s)\bTo\s+be\s+included\s+in\s+the\s+company’s\s+e-mail\s+distributions[^.]*\.""", re.IGNORECASE)
+PAT_ASHRAQ_EMAIL_DIST = re.compile(r"""(?:^|\s)\bTo\s+be\s+included\s+in\s+the\s+company's\s+e-mail\s+distributions[^.]*\.""", re.IGNORECASE)
 PAT_ASHRAQ_IN_MINUTES = re.compile(r"""\s+/\s+in\s+\d+\s+minutes\b""", re.IGNORECASE)
 PAT_ASHRAQ_UPDATED_HOURS = re.compile(r"""\s+/\s+Updated\s+\d+\s+hours\s+ago\b""", re.IGNORECASE)
 
