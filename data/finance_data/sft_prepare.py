@@ -201,6 +201,17 @@ tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_NAME)
 if tokenizer.pad_token is None:
     tokenizer.add_special_tokens({"pad_token": tokenizer.eos_token})
 
+SPECIAL_TOKENS = {
+    "additional_special_tokens": ["<user>", "</user>", "<assistant>", "</assistant>"]
+}
+
+tokenizer.add_special_tokens(SPECIAL_TOKENS)
+
+user_token_id = tokenizer.convert_tokens_to_ids("<user>")
+assistant_token_id = tokenizer.convert_tokens_to_ids("<assistant>")
+
+print("USER TOKEN ID:", user_token_id)
+print("ASSISTANT TOKEN ID:", assistant_token_id)
 
 # ============================================================
 # Encoding with assistant-only loss mask
