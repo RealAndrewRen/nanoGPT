@@ -217,25 +217,30 @@ def encode_split(split_ds, tokenizer, filename, out_dir=OUT_DIR, max_length=MAX_
         if not text:
             continue
 
-        ids = tokenizer.encode(text, truncation=True, max_length=max_length)
+        encoded = tokenizer(
+            text,
+            truncation=True,
+            max_length=max_length,
+            add_special_tokens=False,
+            return_offsets_mapping=True,
+        )
+
+        ids = encoded["input_ids"]
+        offsets = encoded["offset_mapping"]
+
         mask = np.zeros(len(ids), dtype=np.uint8)
 
-        # mask assistant region
-        if "<assistant>" in text:
-            a0 = text.index("<assistant>") + len("<assistant>")
-            a1 = text.index("</assistant>") if "</assistant>" in text else len(text)
+        # find assistant region in raw text
+        a_start = text.find("<assistant>")
+        a_end = text.find("</assistant>")
 
-            prefix = text[:a0]
-            segment = text[:a1]
+        if a_start != -1 and a_end != -1:
+            a_start += len("<assistant>")
 
-            t0 = len(tokenizer.encode(prefix))
-            t1 = len(tokenizer.encode(segment))
-
-            t0 = min(t0, len(ids))
-            t1 = min(t1, len(ids))
-
-            if t1 > t0:
-                mask[t0:t1] = 1
+            # mark tokens whose character spans fall inside assistant region
+            for i, (s, e) in enumerate(offsets):
+                if s >= a_start and e <= a_end:
+                    mask[i] = 1
 
         all_tokens.extend(ids)
         all_masks.extend(mask)
@@ -244,7 +249,6 @@ def encode_split(split_ds, tokenizer, filename, out_dir=OUT_DIR, max_length=MAX_
     np.array(all_masks, dtype=np.uint8).tofile(mask_path)
 
     print(f"💾 Saved {token_path} & {mask_path}")
-
 
 encode_split(train_data, tokenizer, "train.bin")
 encode_split(val_data, tokenizer, "val.bin")
