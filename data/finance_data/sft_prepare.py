@@ -55,6 +55,20 @@ SLUR_PATTERN = re.compile(
     re.IGNORECASE
 )
 
+def clean_joseph_text(text):
+    # first run the general cleaning
+    text = clean_text(text)
+    
+    # then remove LaTeX for Joseph dataset only
+    text = re.sub(r"\$\$?.*?\$\$?", "", text)        # remove $...$ or $$...$$
+    text = re.sub(r"\\[A-Za-z]+", "", text)          # remove LaTeX commands
+    text = re.sub(r"[\[\]\{\}]", "", text)           # remove brackets and braces
+
+    # collapse whitespace again in case cleaning added extra spaces
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+
+
 def clean_text(text):
     if not text or not isinstance(text, str):
         return ""
@@ -166,6 +180,8 @@ for ds_info in datasets:
     for ex in tqdm(data, desc=f"Processing {ds_info['type']}"):
         if ds_info["type"] == "sft":
             out = format_sft(ex)
+            if ds_info["name"] == "Josephgflowers/Finance-Instruct-500k":
+                text = clean_joseph_text(ex["text"])
         elif ds_info["type"] == "personal_finance":
             out = format_personal_finance(ex)
         elif ds_info["type"] == "reddit":
