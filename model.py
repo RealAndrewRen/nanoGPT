@@ -180,18 +180,22 @@ class GPT(nn.Module):
         for block in self.transformer.h:
             x = block(x)
         x = self.transformer.ln_f(x)
-
+        
         if targets is not None:
-            logits = self.lm_head(x)
-    
+           logits = self.lm_head(x)
+
+            # --- Apply assistant-only loss mask ---
             if loss_mask is not None:
-                # ignore loss where mask == 0
-                targets = targets.clone()
-                targets[loss_mask == 0] = -1
+                # reshape
+                mask = loss_mask.view(-1)
+                t = targets.view(-1)
+                t[mask == 0] = -1  # ignore non-assistant tokens
+            else:
+                t = targets.view(-1)
     
             loss = F.cross_entropy(
                 logits.view(-1, logits.size(-1)),
-                targets.view(-1),
+                t,
                 ignore_index=-1
             )
         else:
