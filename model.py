@@ -114,6 +114,7 @@ class GPTConfig:
     n_embd: int = 768
     dropout: float = 0.0
     bias: bool = True # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
+    user_token_id: int | None = None
 
 class GPT(nn.Module):
 
@@ -182,9 +183,21 @@ class GPT(nn.Module):
         x = self.transformer.ln_f(x)
 
         if targets is not None:
-            # if we are given some desired targets also calculate the loss
             logits = self.lm_head(x)
-            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)
+            # ------------------------------------------------------------------
+            # MASK OUT <user> TOKENS DURING TRAINING
+            # ------------------------------------------------------------------
+            if self.config.user_token_id is not None:
+                # clone so we don't modify user’s original tensor
+                targets = targets.clone()
+                # any position whose target == user_token_id → masked out
+                targets[targets == self.config.user_token_id] = -1
+            # ------------------------------------------------------------------
+            loss = F.cross_entropy(
+                logits.view(-1, logits.size(-1)),
+                targets.view(-1),
+                ignore_index=-1
+            )
         else:
             # inference-time mini-optimization: only forward the lm_head on the very last position
             logits = self.lm_head(x[:, [-1], :]) # note: using list [-1] to preserve the time dim
