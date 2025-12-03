@@ -251,7 +251,12 @@ def encode_split(split_ds, tokenizer, filename, out_dir=OUT_DIR, max_length=MAX_
     all_tokens = []
     all_masks = []
 
+    assistant_start_id = tokenizer.convert_tokens_to_ids("<assistant>")
+    assistant_end_id = tokenizer.convert_tokens_to_ids("</assistant>")
+
+
     for ex in tqdm(split_ds, desc=f"Encoding {filename}"):
+
         text = str(ex["text"]).strip()
         if not text:
             continue
@@ -261,25 +266,25 @@ def encode_split(split_ds, tokenizer, filename, out_dir=OUT_DIR, max_length=MAX_
             truncation=True,
             max_length=max_length,
             add_special_tokens=False,
-            return_offsets_mapping=True,
         )
 
         ids = encoded["input_ids"]
-        offsets = encoded["offset_mapping"]
+        mask = []
+        in_assistant = False
 
-        mask = np.zeros(len(ids), dtype=np.uint8)
+        ids = encoded["input_ids"]
 
-        # find assistant region in raw text
-        a_start = text.find("<assistant>")
-        a_end = text.find("</assistant>")
+        assistant_region = False
+        mask = []
+        
+        for tok in ids:
+            if tok == assistant_start_id:
+                assistant_region = True
+            elif tok == assistant_end_id:
+                assistant_region = False
+        
+            mask.append(1 if assistant_region else 0)
 
-        if a_start != -1 and a_end != -1:
-            a_start += len("<assistant>")
-
-            # mark tokens whose character spans fall inside assistant region
-            for i, (s, e) in enumerate(offsets):
-                if s >= a_start and e <= a_end:
-                    mask[i] = 1
 
         all_tokens.extend(ids)
         all_masks.extend(mask)
@@ -288,6 +293,7 @@ def encode_split(split_ds, tokenizer, filename, out_dir=OUT_DIR, max_length=MAX_
     np.array(all_masks, dtype=np.uint8).tofile(mask_path)
 
     print(f"💾 Saved {token_path} & {mask_path}")
+
 
 encode_split(train_data, tokenizer, "train.bin")
 encode_split(val_data, tokenizer, "val.bin")
