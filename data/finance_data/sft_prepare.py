@@ -276,7 +276,7 @@ def encode_split(split_ds, tokenizer, filename, out_dir=OUT_DIR, max_length=MAX_
         assistant_region = False
         for tok in ids:
             if tok == assistant_start_id:
-            assistant_region = True
+                assistant_region = True
 
             mask.append(1 if assistant_region else 0)
 
