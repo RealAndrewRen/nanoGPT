@@ -1,8 +1,4 @@
-# Your AI Studio Challenge Project Title Here
-
-⚠️ _Update the above title with your AI Studio Challenge Project name. Remove all guidance notes and examples in this template before finalizing your README._
-
----
+# Pennywise - A Financial Literacy Large Language Model
 
 ### 👥 **Team Members**
 
@@ -10,11 +6,11 @@
 
 | Name             | GitHub Handle | Contribution                                                             |
 |------------------|---------------|--------------------------------------------------------------------------|
-| Taylor Nguyen    | @taylornguyen | Data exploration, visualization, overall project coordination            |
-| Jordan Ramirez   | @jramirez     | Data collection, exploratory data analysis (EDA), dataset documentation  |
-| Amina Hassan     | @aminahassan  | Data preprocessing, feature engineering, data validation                 |
-| Priya Mehta      | @pmehta       | Model selection, hyperparameter tuning, model training and optimization  |
-| Chris Park       | @chrispark    | Model evaluation, performance analysis, results interpretation           |
+| Andrew Ren    | @taylornguyen | Data exploration, visualization, overall project coordination            |
+| Nailya Alimova   | @jramirez     | Data collection, exploratory data analysis (EDA), dataset documentation  |
+| Anjali Amin     | @aminahassan  | Data preprocessing, feature engineering, data validation                 |
+| Marvin Hoang      | @pmehta       | Model selection, hyperparameter tuning, model training and optimization  |
+| Naisha Mistry       | @chrispark    | Model evaluation, performance analysis, results interpretation           |
 
 ---
 
