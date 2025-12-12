@@ -94,10 +94,10 @@
 ## 📈 **Results & Key Findings**
 
 ### Summary of Key Findings
-- nanoGPT-20k performs best of all pretrained models as it provides more coherent and relevant results than both nanoGPT-6k and nanoGPT-50k
-- nanoGPT-6k outperforms nanoGPT-50k, as it exhibits overfitting and degraded performance
-- SFT results expand on the accuracy and relevance of nanoGPT-20k by generating easy-to-understand chatbot-style responses that do not drift from the user's question
-- SFT results show improved accuracy and relevance, but could be further enhanced in completeness of responses 
+- nanoGPT-20k is the best-performing pretrained model, as it delivers the most coherent and relevant responses compared to nanoGPT-6k and nanoGPT-50k.
+- nanoGPT-6k outperforms nanoGPT-50k, as it suffers from overfitting and produces degraded/hallucinated outputs.
+- SFT fine-tuning enhances nanoGPT-20k by generating clear, conversational, chatbot-style responses that remain focused on the user’s question
+- While SFT results show improvement in accuracy and relevance, the generated outputs can be improved by addressing all aspects of the user's question in detail and avoiding circular reasoning patterns.
 
 
 ### Pre-Training Results
