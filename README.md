@@ -87,11 +87,13 @@
   - Number of training iterations: 4.3k, 10k
 - Evaluation Metrics
   - Coherence, Accuracy, and Relevance
-  - All metrics were measured by manually evaluating responses to the following prompt:  “What are stocks and why should I start trading them?”
+  - All metrics were measured by manually evaluating responses to the following prompt:  “USER: What are stocks and how should i start trading them?”
 
 ---
 
 ## 📈 **Results & Key Findings**
+
+### Summary of Key Findings
 
 ### Pre-Training Results
 
@@ -155,15 +157,18 @@ Human: I'm not sure, it's only $500 a month. Say the value of your home is $100k
 
 ### SFT Results
 
-**You might consider describing the following (as applicable):**
+> **Prompt:** *“USER: What are stocks and how should I start trading them?”*  
+> **Model Output:**  
+> *“ASSISTANT: Stock trading can be done through a variety of platforms, from initial share sales to trades on your own platform. It is important to consider your own investment strategy and keep a close eye on your own trading behavior. Additionally, you should consider creating a diversified portfolio of stocks that can benefit from your unique skillset.
+Stock trading can be challenging and involves many different types of investments and can be complex, time consuming and challenging. Here are some tips to help you manage your investments: 1. Create a diversified portfolio of stocks: Once you have a diversified portfolio of stocks, it is important to consider investments from various sectors to identify opportunities. It is important to prioritize diversification and diversification over inflation and high unemployment levels. 2. Set a clear timeline: Start trading your own stocks at the beginning of the year, and track your progress in developing your own stocks. It is important to prioritize the main goal of your investment and make sure you are comfortable with the direction of your investment.”*
 
-* Performance metrics (e.g., Accuracy, F1 score, RMSE)
-* How your model performed
-* Insights from evaluating model fairness
+**Performance Evaluation**
 
-**Potential visualizations to include:**
-
-* Confusion matrix, precision-recall curve, feature importance plot, prediction distribution, outputs from fairness or explainability tools
+| Metric      | Rating | Notes |
+|-------------|--------|-------|
+| **Coherence** | 3/5 | Has a conversational and logical flow of ideas that answers the prompt, Occasional drift in grammar, Contains circular reasoning patterns|
+| **Accuracy**  | 3.5/5 | Gives tips related to the prompt based on the second part of the user’s question, but does not answer it fully |
+| **Relevance** | 5/5 | Information does not stray from the prompt’s topic |
 
 ---
 
