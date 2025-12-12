@@ -7,7 +7,7 @@
 | Name             | GitHub Handle | Contribution                                                             |
 |------------------|---------------|--------------------------------------------------------------------------|
 | Andrew Ren    | @taylornguyen | Data exploration, visualization, overall project coordination            |
-| Nailya Alimova   | @jramirez     | Data collection, exploratory data analysis (EDA), dataset documentation  |
+| Nailya Alimova   | @naiilya     | Data collection, exploratory data analysis (EDA), dataset documentation  |
 | Anjali Amin     | @aminahassan  | Data preprocessing, feature engineering, data validation                 |
 | Marvin Hoang      | @pmehta       | Model selection, hyperparameter tuning, model training and optimization  |
 | Naisha Mistry       | @naishahmistry    | Model evaluation, performance analysis, results interpretation           |
