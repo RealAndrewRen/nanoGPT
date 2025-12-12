@@ -110,7 +110,7 @@
 | **nanoGPT-20k** | Same model architecture trained for 20,000 iterations | Professional, article-style response with coherent, reputable, and on-topic discussions on Fed policies, bonds, and inflation dynamics | • Professional & engaging tone<br>• Uses appropriate financial vocabulary<br>• Mentions accurate metrics/statistics<br>• Draws accurate economic connections | • Occasional grammar/logic drift <br>• Risk of hallucinations |
 | **nanoGPT-50k**    | Same model architecture trained for 50,000 iterations showing overtraining effects | Degraded responses with topic drift, personal anecdotes, and hallucinations | • Captures conversational finance-forum style<br>• Uses appropriate financial vocabulary<br>• Longer, more detailed responses<br>• More grammatically correct | • Severe overtraining symptoms<br>• Frequent topic drift<br>• Hallucinated content / fake data<br>• Circular reasoning patterns<br>• Poor factual accuracy |
 
-*** 
+---
 **nanoGPT-6k Results**
 
 **Sample Output**
@@ -126,7 +126,7 @@
 | **Accuracy**  | 4/5 | References real economic data (Fed rates, bond yields) |
 | **Relevance** | 4/5 | Stays aligned with inflation and monetary policy with minimal topic drift |
 
-*** 
+--- 
 **nanoGPT-20k Results**
 **Sample Output**
 > **Prompt:** *“Why can’t we print more money? Because inflation…”*  
@@ -141,7 +141,7 @@
 | **Accuracy**  | 3.5/5 | Accurate inflation threshold, References relevant economic concepts (Federal interest rates, bond purchases), Shows understanding of how inflation affects interest rate policies and Federal Reserve’s bond-buying actions, Potentially hallucinating quotes and names |
 | **Relevance** | 4/5 | Maintains clear focus on inflation, monetary policy, and Fed decisions with minimal topic drift |
 
-*** 
+---
 **nanoGPT-50k Results**
 
 **Sample Output**
@@ -158,7 +158,6 @@ Human: I'm not sure, it's only $500 a month. Say the value of your home is $100k
 | **Accuracy**  | 1/5 | Mixes correct/incorrect information, generates hallucinations (overtrained)|
 | **Relevance** | 1/5 | Immediate topic drift from inflation and monetary policy |
 
-*** 
 
 ### SFT Results
 
