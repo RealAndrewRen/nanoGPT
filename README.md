@@ -79,7 +79,10 @@ python data/finance_data/prepare.py
 python train.py config/train_financedata.py
 ```
 Training typically runs for 5k–20k iterations, depending on available compute.
-The resulting model checkpoint will be saved as ck.pt.
+The resulting model checkpoint will be saved in:
+```bash
+out-finance_data/ck.pt
+```
 
 ### 7️⃣ Encode Binaries for Supervised Fine-Tuning
 ```bash
