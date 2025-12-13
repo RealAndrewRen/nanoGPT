@@ -75,14 +75,14 @@ When adding SFT datasets, ensure the `format_sft` function tokenizes the correct
 python data/finance_data/prepare.py
 
 ### 6️⃣ Domain Adaptation Pretraining
-```text
+```bash
 python train.py config/train_financedata.py
 ```
 Training typically runs for 5k–20k iterations, depending on available compute.
 The resulting model checkpoint will be saved as ck.pt.
 
 ### 7️⃣ Encode Binaries for Supervised Fine-Tuning
-```text
+```bash
 python data/finance_data/sft_prepare.py
 ```
 ### 8️⃣ Supervised Fine-Tuning (SFT)
@@ -93,17 +93,21 @@ python data/finance_data/sft_prepare.py
    ```
    (replace the default gpt2 initialization)
 
-3. Resume training from the domain-adapted checkpoint and train for at least 4k iterations.
+2. Execute Steps 1–5 of:
+   ```bash
+   data/finance_data/sft_training_colab.ipynb
+   ```
+3. Train for at least 4k iterations, then save the resulting `ck.pt` checkpoint.
 
-4. Save the resulting checkpoint (ck.pt) upon completion.
+   # Note: Colab is currently required for this step. Work is underway to fully separate this notebook into executable scripts.
 
 ### 9️⃣ Prompt the Model
 
-Use the generation or inference scripts to interact with the trained model.
-
-Work is underway to fully replace remaining notebook-based steps with standalone scripts for improved reproducibility.
-
-
+Follow the remaining steps in:
+```bash
+data/finance_data/sft_training_colab.ipynb
+```
+to load the trained checkpoint and interactively prompt the fine-tuned model.
 
 ---
 
