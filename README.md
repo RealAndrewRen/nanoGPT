@@ -71,9 +71,9 @@ To add a custom dataset, insert an entry with the following format:
 When adding SFT datasets, ensure the `format_sft` function tokenizes the correct columns.
 
 ### 5️⃣ Encode Training Binaries (Domain Adaptation Pretraining)
-
+```bash
 python data/finance_data/prepare.py
-
+```
 ### 6️⃣ Domain Adaptation Pretraining
 ```bash
 python train.py config/train_financedata.py
