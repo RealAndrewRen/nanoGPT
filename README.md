@@ -277,6 +277,6 @@ Cite relevant papers, articles, or resources that supported your project.
 
 ---
 
-## 🙏 **Acknowledgements** (Optional but encouraged)
+## 🙏 **Acknowledgements** 
 
-Thank your Challenge Advisor, host company representatives, TA, and others who supported your project.
+We would like to thank our Challenge Advisor David Fang who is a member of technical staff at OpenAI and Rawisara (Mimi) Lohanimit who was our TA! Their guidance, encouragement, and technical insight were invaluable throughout the development of this project. We are especially thankful for the time and effort they volunteered in support of the Break Through Tech program. They played a significant role in the development of this project and we are very grateful for the effort they put into our learning as students. 
