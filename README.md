@@ -117,8 +117,7 @@ to load the trained checkpoint and interactively prompt the fine-tuned model.
 ## 📊 **Project Overview**
 
 - This project was developed by a team of five AI Studio Fellows at MIT as part of the Break Through Tech AI Program, under the supervision of David Fang (Member of Technical Staff, OpenAI).
-
-- Our work focuses on building a personalized GPT-2 Small (124M) language model using the nanoGPT framework.
+- Our team focuses on building a personalized GPT-2 Small (124M) language model using the nanoGPT framework.
 - The primary objective is to develop a financial-literacy chatbot designed for young users, particularly students, who are seeking accessible explanations of finance concepts such as budgeting, investing, and core economic terminology. To achieve this, we implemented a two-stage training pipeline:
 1. Domain-adaptive pretraining on large-scale financial text corpora
 2. Supervised fine-tuning (SFT) to enable conversational, instruction-following behavior
