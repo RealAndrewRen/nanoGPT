@@ -301,6 +301,7 @@ With additional time and resources, we would pursue the following directions to 
 - Use anonymized user interaction data to inform future evaluation and iterative training cycles.
 
 ---
+<!--
 
 ## 📝 **License**
 
@@ -316,6 +317,7 @@ This project is licensed under the MIT License.
 Cite relevant papers, articles, or resources that supported your project.
 
 ---
+-->
 
 ## 🙏 **Acknowledgements** 
 
