@@ -118,7 +118,8 @@ to load the trained checkpoint and interactively prompt the fine-tuned model.
 
 - This project was developed by a team of five AI Studio Fellows at MIT as part of the Break Through Tech AI Program, under the supervision of David Fang (Member of Technical Staff, OpenAI).
 - Our team focuses on building a personalized GPT-2 Small (124M) language model using the nanoGPT framework.
-- The primary objective is to develop a financial-literacy chatbot designed for young users, particularly students, who are seeking accessible explanations of finance concepts such as budgeting, investing, and core economic terminology. To achieve this, we implemented a two-stage training pipeline:
+- The primary objective is to develop a financial-literacy chatbot designed for young users, particularly students, who are seeking accessible explanations of finance concepts such as budgeting, investing, and core economic terminology.
+- To achieve this, we implemented a two-stage training pipeline:
 1. Domain-adaptive pretraining on large-scale financial text corpora
 2. Supervised fine-tuning (SFT) to enable conversational, instruction-following behavior
 
@@ -130,7 +131,7 @@ This approach allows the model to first acquire strong domain knowledge in finan
 
 1. Base (Pretraining) Datasets
    
-For initial domain adaptation, we curated a diverse set of finance-focused text datasets, referred to as base datasets, including:
+For initial domain adaptation, we curated a diverse set of finance-focused text datasets:
 - Financial textbooks: https://huggingface.co/datasets/alvanlii/finance-textbooks/viewer/default/train?row=0&views%5B%5D=train 
 - Bloomberg financial news: https://huggingface.co/datasets/genloop/bloomberg_financial_news_120k 
 - Financial news articles: https://huggingface.co/datasets/ashraq/financial-news-articles 
@@ -146,7 +147,8 @@ Preprocessing Pipeline:
 - Tokenized text to transform words into model-readable tokens
 
 2. Supervised Fine-Tuning (SFT) Datasets
-- After obtaining a pretrained financial checkpoint, we performed supervised fine-tuning using:
+
+After obtaining a pretrained financial checkpoint, we performed supervised fine-tuning using:
 - Finance Instruct: https://huggingface.co/datasets/Josephgflowers/Finance-Instruct-500k 
 - Finance Alpaca: https://huggingface.co/datasets/gbharti/finance-alpaca/viewer/default/train?row=0&views%5B%5D=train 
 
@@ -156,11 +158,10 @@ Preprocessing Pipeline:
 - Applied regex cleaning to remove rows containing LaTeX artifacts or profanity
 - Standardized formatting
 - Inserted explicit “User” and “Assistant” tokens to structure dialogue
+- Masked “User” tokens so loss is computed only on “Assistant” outputs
 - Converted cleaned conversations into .txt format compatible with nanoGPT
 - Tokenized text to transform words into model-readable tokens
-- Masked “User” tokens so loss is computed only on “Assistant” outputs
 
-This design allowed us to systematically test how masking strategies influence response quality, coherence, and alignment with user intent.
 ---
 
 ## 🧠 **Model Development**
