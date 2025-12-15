@@ -128,7 +128,7 @@ This approach allows the model to first acquire strong domain knowledge in finan
 
 ## 📊 **Data Exploration**
 
-1. Base (Pretraining) Datasets
+### Base (Pretraining) Datasets
    
 For initial domain adaptation, we curated a diverse set of finance-focused text datasets:
 - Financial textbooks: https://huggingface.co/datasets/alvanlii/finance-textbooks/viewer/default/train?row=0&views%5B%5D=train 
@@ -145,7 +145,7 @@ Preprocessing Pipeline:
 - Converted cleaned text into .txt files compatible with nanoGPT
 - Tokenized text to transform words into model-readable tokens
 
-2. Supervised Fine-Tuning (SFT) Datasets
+### Supervised Fine-Tuning (SFT) Datasets
 
 After obtaining a pretrained financial checkpoint, we performed supervised fine-tuning using:
 - Finance Instruct: https://huggingface.co/datasets/Josephgflowers/Finance-Instruct-500k 
